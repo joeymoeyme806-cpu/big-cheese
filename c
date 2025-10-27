@@ -1,5 +1,4 @@
-const init "i" = rand(1, 10)
-
-
 print("hello") 
-when i = 3 do
+if 1 + 2 = 3 do
+  print("hi")
+  end
