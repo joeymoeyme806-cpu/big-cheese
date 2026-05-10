@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RGBI</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@700;800&display=swap');
+
+  :root {
+    --bg: #0d0d0f;
+    --border: #2a2a35;
+    --accent: #00ffa3;
+    --accent3: #5eb8ff;
+    --text: #e8e8f0;
+    --muted: #6b6b80;
+    --mono: 'Share Tech Mono', monospace;
+    --sans: 'Syne', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 40px 24px;
+    background-image:
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,255,163,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 10% 100%, rgba(94,184,255,0.05) 0%, transparent 60%);
+  }
+
+  .wordmark {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(4rem, 16vw, 9rem);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent3) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    animation: fadein 0.6s ease both;
+  }
+
+  .tagline {
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 64px;
+    animation: fadein 0.6s 0.1s ease both;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 420px;
+    animation: fadein 0.6s 0.2s ease both;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 32px;
+    border-radius: 14px;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    background: #141418;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .btn.view::before { background: radial-gradient(ellipse at 0% 50%, rgba(0,255,163,0.1), transparent 70%); }
+  .btn.convert::before { background: radial-gradient(ellipse at 0% 50%, rgba(94,184,255,0.1), transparent 70%); }
+
+  .btn:hover { transform: translateY(-2px); }
+  .btn:hover::before { opacity: 1; }
+  .btn.view:hover { border-color: rgba(0,255,163,0.4); }
+  .btn.convert:hover { border-color: rgba(94,184,255,0.4); }
+
+  .btn-left { display: flex; flex-direction: column; gap: 6px; }
+
+  .btn-title {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+  }
+
+  .btn.view .btn-title { color: var(--accent); }
+  .btn.convert .btn-title { color: var(--accent3); }
+
+  .btn-sub {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .arrow {
+    font-size: 1.4rem;
+    opacity: 0.4;
+    transition: all 0.2s;
+  }
+
+  .btn.view .arrow { color: var(--accent); }
+  .btn.convert .arrow { color: var(--accent3); }
+  .btn:hover .arrow { opacity: 1; transform: translateX(4px); }
+
+  .footer {
+    margin-top: 56px;
+    color: var(--muted);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    animation: fadein 0.6s 0.35s ease both;
+  }
+
+  @keyframes fadein {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="wordmark">RGBI</div>
+<p class="tagline">human-readable image format</p>
+
+<div class="buttons">
+  <a class="btn view" href="viewer.html">
+    <div class="btn-left">
+      <span class="btn-title">Viewer</span>
+      <span class="btn-sub">open &amp; inspect .rgbi files</span>
+    </div>
+    <span class="arrow">→</span>
+  </a>
+  <a class="btn convert" href="rgbi_converter.html">
+    <div class="btn-left">
+      <span class="btn-title">Converter</span>
+      <span class="btn-sub">png ↔ rgbi · create from scratch</span>
+    </div>
+    <span class="arrow">→</span>
+  </a>
+</div>
+
+<p class="footer">keep all three files in the same folder</p>
+
+</body>
+</html>
